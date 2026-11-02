@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Notes{% endblock %} | Lab 6 Notes App</title>
+<style>
+body{margin:0;font:17px/1.6 system-ui,"Segoe UI",sans-serif;background:#f6f9fc;color:#14283c}
+header{display:flex;justify-content:space-between;padding:14px 6vw;border-bottom:3px solid #0b6fd6;background:#fff}
+main{max-width:640px;margin:0 auto;padding:32px 6vw}a{color:#0b6fd6}
+input,textarea{width:100%;font:inherit;padding:8px;margin:6px 0 14px;border:1px solid #9fb3c6}
+button{font:inherit;padding:8px 18px;background:#0b6fd6;color:#fff;border:0;cursor:pointer}
+.note{background:#fff;border:1px solid #cfdbe6;border-left:5px solid #0b6fd6;padding:10px 16px;margin:12px 0}
+.msg{background:#fff3cd;padding:8px 14px;margin-bottom:14px}footer{padding:18px 6vw;font-size:.85rem;color:#47607a}
+</style></head><body>
+<header><strong>Lab 6 Notes App</strong><span>{% if user %}{{ user }} &middot; <a href="{{ url_for('logout') }}">Log out</a>{% endif %}</span></header>
+<main>{% for m in get_flashed_messages() %}<div class="msg">{{ m }}</div>{% endfor %}{% block body %}{% endblock %}</main>
+<footer>Served by: {{ host }}</footer></body></html>
